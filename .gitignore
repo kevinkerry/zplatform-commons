@@ -32,3 +32,4 @@ RemoteSystemsTempFiles/*
 Servers*/*
 *.classpath
 */*.classpath
+/target/
