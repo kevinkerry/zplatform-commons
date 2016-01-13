@@ -12,8 +12,16 @@ package com.zlebank.zplatform.commons.dao.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+
+import com.zlebank.zplatform.commons.enums.ChannelStatusType;
+
 
 /**
  * Class Description
@@ -39,7 +47,7 @@ public class PojoChannel {
     /**渠道子类型**/
     private String subtype;
     /**状态(00：启用;其他：关闭)**/
-    private String status;
+    private ChannelStatusType status;
     /**受理业务代码集**/
     private String appset;
     /**备注**/
@@ -53,8 +61,16 @@ public class PojoChannel {
     /**通道应收款科目**/
     private String acctCodeReceivable;
 
-    @Column(name = "CHNLID")
+    @GenericGenerator(name = "id_gen", strategy = "enhanced-table", parameters = {
+            @Parameter(name = "table_name", value = "T_C_PRIMAY_KEY"),
+            @Parameter(name = "value_column_name", value = "NEXT_ID"),
+            @Parameter(name = "segment_column_name", value = "KEY_NAME"),
+            @Parameter(name = "segment_value", value = "CHANNEL_ID"),
+            @Parameter(name = "increment_size", value = "1"),
+            @Parameter(name = "optimizer", value = "pooled-lo") })
     @Id
+    @GeneratedValue(generator = "id_gen")
+    @Column(name = "CHNLID")
     public Long getChnlid() {
         return chnlid;
     }
@@ -97,10 +113,11 @@ public class PojoChannel {
         this.subtype = subtype;
     }
     @Column(name = "STATUS")
-    public String getStatus() {
+    @Type(type = "com.zlebank.zplatform.commons.dao.pojo.usertype.ChannelStatusSqlType")
+    public ChannelStatusType getStatus() {
         return status;
     }
-    public void setStatus(String status) {
+    public void setStatus(ChannelStatusType status) {
         this.status = status;
     }
     @Column(name = "APPSET")
