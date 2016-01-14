@@ -18,7 +18,11 @@ public class ProductModel implements java.io.Serializable {
 
 	// Fields
 
-	private String prdtver;
+	/**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 7773417241591102956L;
+    private String prdtver;
 	private Long prdtid;
 	private String prdtname;
 	private String status;
