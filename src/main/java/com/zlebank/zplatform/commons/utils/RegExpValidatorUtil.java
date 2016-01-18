@@ -56,8 +56,16 @@ return match(regex, str);
 * @return 如果是符合格式的字符串,返回 <b>true </b>,否则为 <b>false </b>
 */
 public static boolean IsPassword(String str) {
-String regex = "[A-Za-z]+[0-9]";
+String regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$";
 return match(regex, str);
+}
+
+public static void main(String[] args) {
+    System.out.println(IsPassword("123456"));
+    System.out.println(IsPassword("1234q"));
+    System.out.println(IsPassword("1234511"));
+    System.out.println(IsPassword("abcdefgq"));
+    System.out.println(IsPassword("123451q"));
 }
 
 /**
