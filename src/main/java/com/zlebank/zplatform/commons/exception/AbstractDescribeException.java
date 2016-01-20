@@ -59,14 +59,15 @@ public abstract class AbstractDescribeException extends BaseException {
      * serialVersionUID
      */
     private static final long serialVersionUID = 4880611538778827974L;
-    private final static ResourceBundle RESOURCE = ResourceBundle
-            .getBundle("exception_des");
-
+    
+    @Override
     public String getMessage() {
-        String message = RESOURCE.getString(getCode());
+        String message = getResourceBundle().getString(getCode());
         return String.format(message, getParams());
     }
-
+    
+    public abstract ResourceBundle getResourceBundle();
+    
     public abstract String getCode();
     
     public AbstractDescribeException() {
