@@ -30,8 +30,8 @@ public enum ModuleTypeEnum {
     CHANGEPAYPWD("1004"),
     /**1005:绑卡**/
     BINDCARD("1005"),
-    /**提现**/
-    WITHDRAW("1006"),
+    /**账户支付**/
+    ACCOUNTPAY("1006"),
     /**未知状态**/
     UNKNOW("99");
 
