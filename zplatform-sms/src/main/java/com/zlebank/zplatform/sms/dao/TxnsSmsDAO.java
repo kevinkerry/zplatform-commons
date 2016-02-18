@@ -11,7 +11,6 @@
 package com.zlebank.zplatform.sms.dao;
 
 import com.zlebank.zplatform.commons.dao.BaseDAO;
-import com.zlebank.zplatform.sms.pojo.PojoSmsModule;
 import com.zlebank.zplatform.sms.pojo.PojoTxnsSms;
 import com.zlebank.zplatform.sms.pojo.enums.ModuleTypeEnum;
 
