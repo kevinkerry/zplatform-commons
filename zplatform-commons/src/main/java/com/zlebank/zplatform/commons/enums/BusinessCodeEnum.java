@@ -35,6 +35,8 @@ public enum BusinessCodeEnum {
     REALNAME_AUTH_COST("80000001"),
     /** 实名认证【无成本】 **/
     REALNAME_AUTH_NO_COST("80000002"),
+    /** 转账交易流水 **/
+    TRAN_DATA_NO("90000001"),
     UNKNOW("");//未知
     private String busiCode;
     
