@@ -23,7 +23,12 @@ public enum BusinessCodeEnum {
     CONSUMEACCOUNT("10000002"),//消费-账户
     CONSUMESPLIT("10000004"),//消费-分账
     RECHARGE("20000001"),//充值
-    WITHDRAWALS("30000001"),//提现
+    /** 提现申请 **/
+    WITHDRAWALS("30000001"),
+    /** 提现成功 **/
+    WITHDRAWALS_SUCCSS("30000002"),
+    /** 提现失败 **/
+    WITHDRAWALS_FAILED("30000003"),
     REFUND("40000001"),//退款
     /** 代付申请 **/
     INSTEADPAY_APPLY("70000001"),
