@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zlebank.zplatform</groupId>
 	<artifactId>zplatform-commons</artifactId>
-	<version>1.2.0</version>
+	<version>1.3.0</version>
 
 	<name>zplatform-commons</name>
 
@@ -79,12 +79,12 @@
 
 	<distributionManagement>
 		<repository>
-			<id>zplatform</id>
+			<id>zplatform-Releases</id>
 			<name>Nexus Release</name>
 			<url>${project.nexus}/nexus/content/repositories/zplatform-Releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>zplatform</id>
+			<id>zplatform-Snapshots</id>
 			<name>Nexus Snapshots</name>
 			<url>${project.nexus}/nexus/content/repositories/zplatform-Snapshots</url>
 		</snapshotRepository>
@@ -364,6 +364,7 @@
 						</flowInitContext>
 						<pushReleases>true</pushReleases>
 						<pushHotfixes>true</pushHotfixes>
+						<allowSnapshots>false</allowSnapshots>
 					</configuration>
 				</plugin>
 			</plugins>

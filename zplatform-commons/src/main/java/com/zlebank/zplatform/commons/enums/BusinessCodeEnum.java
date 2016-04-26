@@ -23,7 +23,12 @@ public enum BusinessCodeEnum {
     CONSUMEACCOUNT("10000002"),//消费-账户
     CONSUMESPLIT("10000004"),//消费-分账
     RECHARGE("20000001"),//充值
-    WITHDRAWALS("30000001"),//提现
+    /** 提现申请 **/
+    WITHDRAWALS("30000001"),
+    /** 提现成功 **/
+    WITHDRAWALS_SUCCSS("30000002"),
+    /** 提现失败 **/
+    WITHDRAWALS_FAILED("30000003"),
     REFUND("40000001"),//退款
     /** 代付申请 **/
     INSTEADPAY_APPLY("70000001"),
@@ -35,6 +40,8 @@ public enum BusinessCodeEnum {
     REALNAME_AUTH_COST("80000001"),
     /** 实名认证【无成本】 **/
     REALNAME_AUTH_NO_COST("80000002"),
+    /** 转账交易流水 **/
+    TRAN_DATA_NO("90000001"),
     UNKNOW("");//未知
     private String busiCode;
     
