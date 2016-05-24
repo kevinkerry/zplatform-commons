@@ -1,36 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zlebank.zplatform</groupId>
-	<artifactId>zplatform-sms</artifactId>
-	<version>1.3.0</version>
-	<packaging>jar</packaging>
-	<name>zplatform-sms</name>
-	<url>http://www.zlebank.com/</url>
-	<description>证联支付平台</description>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.zlebank.zplatform</groupId>
-			<artifactId>zplatform-commons</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.11</version>
-				<scope>test</scope>
-			</dependency>
-	</dependencies>
+	<artifactId>zplatform-commons-test</artifactId>
+	<version>1.0.0</version>
+
+	<name>zplatform-commons-test</name>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -38,14 +13,13 @@
 		<project.gitserver>192.168.101.11</project.gitserver>
 		<project.remoteArtifactRepositories>${project.nexus}/nexus/content/groups/public</project.remoteArtifactRepositories>
 		<sonar.language>java</sonar.language>
-		<skipTests>true</skipTests>
-		<skipJavaDoc>true</skipJavaDoc>
+		<skipTests>false</skipTests>
+		<skipJavaDoc>false</skipJavaDoc>
 		<compiler.debug>true</compiler.debug>
 		<compiler.optimize>true</compiler.optimize>
-		<springframework.version>4.2.0.RELEASE</springframework.version>
-		<hibernate.version>4.2.4.Final</hibernate.version>
 		<git.project>root@${project.gitserver}:zplatform.git</git.project>
 	</properties>
+
 	<scm>
 		<connection>scm:git://${git.project}}</connection>
 		<developerConnection>scm:git://${git.project}</developerConnection>
@@ -108,11 +82,39 @@
 			<url>${project.nexus}/nexus/content/repositories/zplatform-Releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>zplatform-Releases</id>
+			<id>zplatform-Snapshots</id>
 			<name>Nexus Snapshots</name>
 			<url>${project.nexus}/nexus/content/repositories/zplatform-Snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+
+		</dependency>
+	</dependencies>
+
 	<build>
 		<resources>
 			<resource>
@@ -128,7 +130,6 @@
 				</includes>
 			</resource>
 		</resources>
-
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
@@ -137,10 +138,8 @@
 				</includes>
 			</testResource>
 		</testResources>
-
 		<pluginManagement>
 			<plugins>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -174,17 +173,15 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.0</version>
 					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
+						<source>1.7</source>
+						<target>1.7</target>
 						<encoding>UTF-8</encoding>
-						<skip>true</skip>
 						<optimize>${compiler.debug}</optimize>
 						<debug>${compiler.optimize}</debug>
 						<!-- <compilerArguments> <verbose /> <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath> 
 							</compilerArguments> <compilerArgument>-verbose </compilerArgument> -->
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -193,7 +190,6 @@
 						<skipTests>${skipTests}</skipTests>
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
@@ -210,7 +206,6 @@
 						</execution>
 					</executions>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
@@ -226,13 +221,36 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-scm-plugin</artifactId>
 					<version>1.8.1</version>
 					<configuration>
 						<connectionType>connection</connectionType>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.8</version>
+					<configuration>
+						<skip>${skipJavaDoc}</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>external.atlassian.jgitflow</groupId>
+					<artifactId>jgitflow-maven-plugin</artifactId>
+					<version>1.0-m5.1</version>
+					<configuration>
+						<allowSnapshots>true</allowSnapshots>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<flowInitContext>
+							<masterBranchName>master</masterBranchName>
+							<developBranchName>develop</developBranchName>
+						</flowInitContext>
+						<pushReleases>true</pushReleases>
+						<pushHotfixes>true</pushHotfixes>
+						<allowSnapshots>false</allowSnapshots>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -254,10 +272,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8</version>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
 			</plugin>
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.maven.plugins</groupId> -->
@@ -270,19 +284,7 @@
 			<plugin>
 				<groupId>external.atlassian.jgitflow</groupId>
 				<artifactId>jgitflow-maven-plugin</artifactId>
-				<version>1.0-m5.1</version>
-				<configuration>
-					<allowSnapshots>true</allowSnapshots>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<flowInitContext>
-						<masterBranchName>master</masterBranchName>
-						<developBranchName>develop</developBranchName>
-					</flowInitContext>
-					<pushReleases>true</pushReleases>
-					<pushHotfixes>true</pushHotfixes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	
 </project>

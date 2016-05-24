@@ -32,6 +32,8 @@ public enum ModuleTypeEnum {
     BINDCARD("1005"),
     /**账户支付**/
     ACCOUNTPAY("1006"),
+    /**绑定手机号*/
+    BINDPHONE("1007"),
     /**未知状态**/
     UNKNOW("99");
 
