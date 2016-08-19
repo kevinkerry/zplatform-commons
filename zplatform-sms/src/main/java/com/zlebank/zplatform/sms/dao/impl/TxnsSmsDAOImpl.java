@@ -11,8 +11,11 @@
 package com.zlebank.zplatform.sms.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +65,8 @@ public class TxnsSmsDAOImpl extends HibernateBaseDAOImpl<PojoTxnsSms> implements
         }
         return null;
     }
+	
+	
 
 	/**
 	 *
@@ -71,5 +76,21 @@ public class TxnsSmsDAOImpl extends HibernateBaseDAOImpl<PojoTxnsSms> implements
 	@Transactional(propagation=Propagation.REQUIRES_NEW,rollbackFor=Throwable.class)
 	public void saveSMS(PojoTxnsSms sms) {
 		 getSession().save(sms);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly=true)
+	public String getSMSURL() {
+		String hql = "select para_code as PARA_CODE from t_para_dic where para_type = ?";
+		SQLQuery query = (SQLQuery) getSession().createSQLQuery(hql).setResultTransformer(
+				Transformers.ALIAS_TO_ENTITY_MAP);
+		query.setString(0, "SMSURL");
+		List<Map<String, Object>> list = query.list();
+		if(list.size()>0){
+			Map<String, Object> paraDic = list.get(0);
+			return paraDic.get("PARA_CODE")+"";
+		}
+		return null;
 	}
 }

@@ -92,8 +92,10 @@ public class SMSServiceImpl implements ISMSService{
 			paramMap.put("Content", content);
 			HttpUtils httpUtils = new HttpUtils();
 			httpUtils.openConnection();
-			log.info("start send sms,the mobile phone numbuer:"+phoneNo+"--- send content: "+content);
-			String responseContent = httpUtils.executeHttpPost(RESOURCE.getString("sms_url"), setHttpParams(paramMap), ENCODE);
+			
+			String sms_url=txnsSmsDAO.getSMSURL();
+			log.info("start send sms,the mobile phone numbuer:"+phoneNo+"---send url:"+sms_url+" send content: "+content);
+			String responseContent = httpUtils.executeHttpPost(sms_url, setHttpParams(paramMap), ENCODE);
 			httpUtils.closeConnection();
 			inputLine = Integer.valueOf(responseContent);
 			PojoTxnsSms sms = new PojoTxnsSms();

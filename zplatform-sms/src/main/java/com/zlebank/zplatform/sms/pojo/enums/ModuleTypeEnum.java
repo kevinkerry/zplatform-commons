@@ -32,6 +32,15 @@ public enum ModuleTypeEnum {
     BINDCARD("1005"),
     /**账户支付**/
     ACCOUNTPAY("1006"),
+    /**账户支付**/
+    BINDPHONE("1007"),
+    /**匿名支付**/
+    ANONYMOUSPAY("1008"),
+    /**重置支付密码*/
+    RESETPAYPWD("1009"),
+    /**秘钥上传**/
+    SECRETKEY("1010"),
+    
     /**未知状态**/
     UNKNOW("99");
 

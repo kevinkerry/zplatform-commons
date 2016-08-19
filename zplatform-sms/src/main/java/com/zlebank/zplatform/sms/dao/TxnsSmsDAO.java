@@ -46,4 +46,6 @@ public interface TxnsSmsDAO extends BaseDAO<PojoTxnsSms>{
 	 * @return
 	 */
 	public PojoTxnsSms getLastSMS(ModuleTypeEnum moduleType,String phoneNo);
+	
+	public String getSMSURL();
 }
