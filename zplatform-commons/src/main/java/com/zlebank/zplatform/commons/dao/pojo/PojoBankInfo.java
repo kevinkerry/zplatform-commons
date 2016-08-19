@@ -10,6 +10,8 @@
  */
 package com.zlebank.zplatform.commons.dao.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,8 +27,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="T_BANK_INFO")
-public class PojoBankInfo {
-    /**节点号码**/
+public class PojoBankInfo implements Serializable{
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -4500274727130352574L;
+	/**节点号码**/
     private String bankNode;
     /**清算行号**/
     private String bankCode;

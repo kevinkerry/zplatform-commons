@@ -10,8 +10,12 @@
  */
 package com.zlebank.zplatform.commons.dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zlebank.zplatform.commons.dao.CityDAO;
 import com.zlebank.zplatform.commons.dao.pojo.PojoCity;
@@ -34,5 +38,19 @@ public class CityDAOImpl extends HibernateBaseDAOImpl<PojoCity> implements CityD
        .add(Restrictions.eq("", code)).uniqueResult();
         
     }
+
+	/**
+	 *
+	 * @param pid
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly=true)
+	public List<PojoCity> getCityByPID(Long pid) {
+		Criteria criteria = this.getSession().createCriteria(PojoCity.class);
+		criteria.add(Restrictions.eq("pId", pid));
+		return criteria.list();
+	}
 
 }

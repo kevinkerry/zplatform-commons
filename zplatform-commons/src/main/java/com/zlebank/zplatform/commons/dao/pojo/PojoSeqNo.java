@@ -10,6 +10,7 @@
  */
 package com.zlebank.zplatform.commons.dao.pojo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -23,8 +24,12 @@ import javax.persistence.Id;
  * @date 2015年9月18日 下午4:37:42
  * @since
  */
-public class PojoSeqNo {
-    private long id;
+public class PojoSeqNo implements Serializable{
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -1563408955588588375L;
+	private long id;
     private int seqNo;
     private Date today;
     private int length;

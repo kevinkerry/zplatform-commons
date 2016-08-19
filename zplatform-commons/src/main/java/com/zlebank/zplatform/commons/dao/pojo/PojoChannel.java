@@ -10,6 +10,8 @@
  */
 package com.zlebank.zplatform.commons.dao.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +35,13 @@ import com.zlebank.zplatform.commons.enums.ChannelStatusType;
  */
 @Entity
 @Table(name="T_CHANNEL")
-public class PojoChannel {
-    /**渠道标识**/
+public class PojoChannel implements Serializable{
+	
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 717849105348015289L;
+	/**渠道标识**/
     private Long chnlid;
     /**渠道代码**/
     private String chnlcode;

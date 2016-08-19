@@ -10,6 +10,8 @@
  */
 package com.zlebank.zplatform.commons.dao.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,9 +29,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="T_CITY")
-public class PojoCity {
+public class PojoCity implements Serializable{
    
-    private long cityId;
+    /**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -1708345878848972858L;
+
+	private long cityId;
     
     private String cityName;
     

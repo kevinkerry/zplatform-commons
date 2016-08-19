@@ -10,6 +10,7 @@
  */
 package com.zlebank.zplatform.commons.dao.pojo;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -20,8 +21,12 @@ import java.sql.Timestamp;
  * @date 2015年8月21日 上午10:38:00
  * @since
  */
-public abstract class RecordedPojo extends Pojo {
+public abstract class RecordedPojo extends Pojo implements Serializable{
 
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 8226134998843018710L;
 	private long inUser;
 	private Timestamp inTime;
 	private long upTime;

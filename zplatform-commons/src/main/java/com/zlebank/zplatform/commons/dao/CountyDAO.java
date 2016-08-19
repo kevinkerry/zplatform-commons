@@ -10,6 +10,8 @@
  */
 package com.zlebank.zplatform.commons.dao;
 
+import java.util.List;
+
 import com.zlebank.zplatform.commons.dao.pojo.PojoCounty;
 
 /**
@@ -28,4 +30,11 @@ public interface CountyDAO extends BaseDAO<PojoCounty> {
          * @return PojoCounty
          */
     public PojoCounty getCountByCode(String code);
+    
+    /**
+     * 通过cid取得区集合
+     * @param cid
+     * @return
+     */
+    public List<PojoCounty> getCountyByCID(Long cid);
 }

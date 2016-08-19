@@ -10,9 +10,12 @@
  */
 package com.zlebank.zplatform.commons.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zlebank.zplatform.commons.dao.CountyDAO;
 import com.zlebank.zplatform.commons.dao.pojo.PojoCounty;
@@ -30,6 +33,7 @@ public class CountyDAOImpl  extends HibernateBaseDAOImpl<PojoCounty>implements C
 
 
     @Override
+    @Transactional(readOnly=true)
     public PojoCounty getCountByCode(String code) {
         Criteria crite= getSession().createCriteria(PojoCounty.class);
         crite.add(Restrictions.eq("xzCode", code));
@@ -38,5 +42,18 @@ public class CountyDAOImpl  extends HibernateBaseDAOImpl<PojoCounty>implements C
 //        return (PojoCounty)this.getSession().createCriteria(PojoCounty.class)
 //                .add(Restrictions.eq("xzCode", code)).uniqueResult();
     }
+
+	/**
+	 *
+	 * @param cid
+	 * @return
+	 */
+	@Override
+	@Transactional(readOnly=true)
+	public List<PojoCounty> getCountyByCID(Long cid) {
+		Criteria crite= getSession().createCriteria(PojoCounty.class);
+        crite.add(Restrictions.eq("Cid", cid));
+		return crite.list();
+	}
 
 }

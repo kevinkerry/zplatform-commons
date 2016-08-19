@@ -10,6 +10,8 @@
  */
 package com.zlebank.zplatform.commons.dao;
 
+import java.util.List;
+
 import com.zlebank.zplatform.commons.dao.pojo.PojoCity;
 
 /**
@@ -26,6 +28,14 @@ public interface CityDAO extends BaseDAO<PojoCity> {
      * @param code
      * @return PojoCity
      */
+	@Deprecated
     public PojoCity getCityByCode(String code);
+	
+	/**
+	 * 通过省份ID取得市信息集合
+	 * @param pid
+	 * @return
+	 */
+	public List<PojoCity> getCityByPID(Long pid);
     
 }

@@ -10,10 +10,11 @@
  */
 package com.zlebank.zplatform.commons.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zlebank.zplatform.commons.dao.ProvinceDAO;
@@ -42,12 +43,20 @@ public class ProvinceDAOImpl extends HibernateBaseDAOImpl<PojoProvince>implement
     }
 
     @Override
-    @Transactional(propagation=Propagation.REQUIRES_NEW)
+    @Transactional(readOnly=true)
     public PojoProvince getProvinceByXZCode(String code) {
         String hql = "from PojoProvince where xzCode = ?";
         Query query = getSession().createQuery(hql);
         query.setString(0, code);
         return (PojoProvince) query.uniqueResult();
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Transactional(readOnly=true)
+    public List<PojoProvince> getAllProvice(){
+    	String hql = "from PojoProvince order by provinceId asc";
+        Query query = getSession().createQuery(hql);
+    	return query.list();
     }
 
 }
