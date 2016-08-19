@@ -33,7 +33,7 @@ public enum ModuleTypeEnum {
     /**账户支付**/
     ACCOUNTPAY("1006"),
     /**账户支付**/
-    BINDPHONE("1007"),
+    
     /**匿名支付**/
     ANONYMOUSPAY("1008"),
     /**重置支付密码*/
@@ -41,6 +41,9 @@ public enum ModuleTypeEnum {
     /**秘钥上传**/
     SECRETKEY("1010"),
     
+
+    /**绑定手机号*/
+    BINDPHONE("1007"),
     /**未知状态**/
     UNKNOW("99");
 
