@@ -59,4 +59,18 @@ public class ProvinceDAOImpl extends HibernateBaseDAOImpl<PojoProvince>implement
     	return query.list();
     }
 
+	/**
+	 *
+	 * @param pid
+	 * @return
+	 */
+	@Override
+	@Transactional(readOnly=true)
+	public PojoProvince get(long pid) {
+		String hql = "from PojoProvince where provinceId = ?";
+        Query query = getSession().createQuery(hql);
+        query.setLong(0, pid);
+        return (PojoProvince) query.uniqueResult();
+	}
+
 }

@@ -209,4 +209,22 @@ public class SMSServiceImpl implements ISMSService{
         }
 		return 1;
 	}
+	
+	
+	public String generateCode(ModuleTypeEnum moduleType,String phoneNo,String orderNo){
+		String code = getVerifyCode();
+		PojoSmsModule smsModule = smsModuleDAO.getModuleByType(moduleType);
+		
+		PojoTxnsSms sms = new PojoTxnsSms();
+		sms.setVerifycode(code);
+		sms.setTn(orderNo);
+		sms.setMobile(phoneNo);
+		sms.setSendtime(DateUtil.getCurrentDateTime());
+		sms.setOverduetime(DateUtil.formatDateTime(DateUtil.addMin(new Date(), smsModule.getValiytime()/60)));
+		//sms.setRetcode(responseContent);
+		sms.setModuletype(moduleType.getCode());
+		//sms.setContent(content);
+		txnsSmsDAO.saveSMS(sms);
+		return code;
+	}
 }

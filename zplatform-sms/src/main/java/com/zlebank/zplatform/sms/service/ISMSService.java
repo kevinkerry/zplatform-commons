@@ -50,5 +50,12 @@ public interface ISMSService {
 	 */
 	public int verifyCode(ModuleTypeEnum moduleType,String phoneNo,String code);
 	
-	
+	/**
+	 * 生成短信验证码（不发送短信，短信由第三方发送）
+	 * @param moduleType
+	 * @param phoneNo
+	 * @param orderNo
+	 * @return
+	 */
+	public String generateCode(ModuleTypeEnum moduleType,String phoneNo,String orderNo);
 }

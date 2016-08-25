@@ -73,7 +73,7 @@ public class TxnsSmsDAOImpl extends HibernateBaseDAOImpl<PojoTxnsSms> implements
 	 * @param sms
 	 */
 	@Override
-	@Transactional(propagation=Propagation.REQUIRES_NEW,rollbackFor=Throwable.class)
+	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Throwable.class)
 	public void saveSMS(PojoTxnsSms sms) {
 		 getSession().save(sms);
 	}

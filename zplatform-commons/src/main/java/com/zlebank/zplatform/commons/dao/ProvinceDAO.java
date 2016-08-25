@@ -13,6 +13,7 @@ package com.zlebank.zplatform.commons.dao;
 
 import java.util.List;
 
+import com.zlebank.zplatform.commons.dao.pojo.Pojo;
 import com.zlebank.zplatform.commons.dao.pojo.PojoProvince;
 
 /**
@@ -43,4 +44,11 @@ public interface ProvinceDAO extends BaseDAO<PojoProvince> {
      * @return
      */
     public List<PojoProvince> getAllProvice();
+    
+    /**
+     * 通过主键获取省份信息
+     * @param pid
+     * @return
+     */
+    public PojoProvince get(long pid);
 }
