@@ -10,6 +10,7 @@
  */
 package com.zlebank.zplatform.commons.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ import java.util.List;
  * @date 2015-6-25 下午04:41:13
  * @since
  */
-public class DefaultPageResult<T extends Bean> implements PagedResult<T> {
+public class DefaultPageResult<T extends Bean> implements PagedResult<T>,Serializable {
 
 	private List<T> result;
 	private long total;

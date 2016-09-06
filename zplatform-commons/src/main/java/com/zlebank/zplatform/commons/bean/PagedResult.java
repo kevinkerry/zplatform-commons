@@ -10,6 +10,7 @@
  */
 package com.zlebank.zplatform.commons.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ import java.util.List;
  * @date 2015-6-25 下午04:37:33
  * @since 
  */
-public interface PagedResult<T extends Bean> {     
+public interface PagedResult<T extends Bean> extends Serializable {     
     long getTotal();
     List<T> getPagedResult() throws  IllegalAccessException;
 }
