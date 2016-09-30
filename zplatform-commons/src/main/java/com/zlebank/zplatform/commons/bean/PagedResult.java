@@ -21,7 +21,7 @@ import java.util.List;
  * @date 2015-6-25 下午04:37:33
  * @since 
  */
-public interface PagedResult<T extends Bean> extends Serializable {     
+public interface PagedResult<T> extends Serializable {     
     long getTotal();
     List<T> getPagedResult() throws  IllegalAccessException;
 }

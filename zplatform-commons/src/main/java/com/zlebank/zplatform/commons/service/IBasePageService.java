@@ -10,7 +10,6 @@
  */
 package com.zlebank.zplatform.commons.service;
 
-import com.zlebank.zplatform.commons.bean.Bean;
 import com.zlebank.zplatform.commons.bean.PagedResult;
 
 /**
@@ -21,6 +20,6 @@ import com.zlebank.zplatform.commons.bean.PagedResult;
  * @date 2015-7-13 下午04:11:26
  * @since 
  */
-public interface IBasePageService<T,E extends Bean> {
+public interface IBasePageService<T,E> {
     public PagedResult<E> queryPaged(int page, int pageSize, T example);
 }

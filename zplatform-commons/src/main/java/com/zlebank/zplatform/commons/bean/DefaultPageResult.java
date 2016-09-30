@@ -21,8 +21,12 @@ import java.util.List;
  * @date 2015-6-25 下午04:41:13
  * @since
  */
-public class DefaultPageResult<T extends Bean> implements PagedResult<T>,Serializable {
+public class DefaultPageResult<T> implements PagedResult<T>,Serializable {
 
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -4555056705299478877L;
 	private List<T> result;
 	private long total;
 

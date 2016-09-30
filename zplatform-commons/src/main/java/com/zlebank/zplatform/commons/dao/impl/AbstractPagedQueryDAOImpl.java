@@ -27,7 +27,7 @@ import com.zlebank.zplatform.commons.dao.BasePagedQueryDAO;
  * @date 2015-7-8 上午09:53:58
  * @since 
  */
-public abstract class AbstractPagedQueryDAOImpl<T, E extends Bean>
+public abstract class AbstractPagedQueryDAOImpl<T, E>
         extends
             HibernateBaseDAOImpl<T> implements BasePagedQueryDAO<T, E>{
     
